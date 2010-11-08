@@ -1,0 +1,13 @@
+%header
+	%form{:method => 'get', :action => '/a/'}
+		%h1
+			Is @
+			%input{:type => 'text', :id => 'username', :value => @username}
+			angry today?
+		%p
+			%pre
+				- if @timeout
+					Uh-oh! Timeout! We probably got rate-limited. Contents as follows: #{@timeline.inspect}
+				- else
+					#{@angriest_tweet.inspect}
+		%p Avalanche!
