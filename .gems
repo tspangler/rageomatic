@@ -1,1 +1,5 @@
 sinatra
+haml
+sass
+open-uri
+json
