@@ -43,6 +43,10 @@ post '/' do
   haml :index, :locals => {:angriest_tweet => @angriest_tweet, :timeout => @timeout, :timeline => @timeline}
 end
 
+get '/AirConditioner.ttf' do
+  open('AirConditioner.ttf').read
+end
+
 get '/css/screen.css' do
   scss :screen
 end
