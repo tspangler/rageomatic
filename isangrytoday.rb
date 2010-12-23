@@ -8,15 +8,19 @@ require 'json'
 set :haml, :format => :html5
 set :logging, true
 
-get '/a/:username' do |username|
-  @username = username
+get '/' do
+  haml :index
+end
+
+post '/' do
+  @username = params[:username]  
 
   # Set up an empty hash for the angriest tweet of them all
   @angriest_tweet = {:score => 0, :text => ''}
 
   begin
     # Fetch the timeline
-    @timeline = fetch_and_parse_timeline(username)
+    @timeline = fetch_and_parse_timeline(@username)
     @timeline.each do |tweet|
       angriness_factor = calculate_angriness_factor(tweet['text'])
 
@@ -29,14 +33,17 @@ get '/a/:username' do |username|
       end
     end    
 
+  rescue OpenURI::HTTPError
+    @timeout = "Couldn't find Twitter user #{@username}!"
+
   rescue Timeout::Error
-    @timeout = 'Could not fetch timeline for ' + username + '.'
+    @timeout = 'Could not fetch timeline for ' + @username + '.'
   end
 
   haml :index, :locals => {:angriest_tweet => @angriest_tweet, :timeout => @timeout, :timeline => @timeline}
 end
 
-get '/screen.css' do
+get '/css/screen.css' do
   scss :screen
 end
 

@@ -1,13 +1,12 @@
 %header
-	%form{:method => 'get', :action => '/a/'}
-		%h1
+	%form{:method => "post", :action => "/"}
+		%h2
 			Is @
-			%input{:type => 'text', :id => 'username', :value => @username}
+			%input{:type => "text", :id => "username", :name => "username", :value => @username}
 			angry today?
 		%p
 			%pre
 				- if @timeout
-					Uh-oh! Timeout! We probably got rate-limited. Contents as follows: #{@timeline.inspect}
+					#{@timeout}
 				- else
 					#{@angriest_tweet.inspect}
-		%p Avalanche!

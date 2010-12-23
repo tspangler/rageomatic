@@ -1,7 +1,11 @@
 !!! 5
 %html
 	%head
-		%link{:rel => "stylesheet", :href => "/screen.css"}
-		%title= "Is @#{@username} angry today?"
+		%link{:rel => "stylesheet", :href => "/css/screen.css"}
+		- if @username
+			%title= "Is @#{@username} angry today?"
+		- else
+			%title="Rageomatic!"
 	%body
+		%h1 Rageomatic!
 		= yield

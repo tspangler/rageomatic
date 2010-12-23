@@ -1,6 +1,11 @@
-body { font-family:Helvetica, sans-serif; font-size:12pt; }
+@font-face {
+	font-family:'AirConditioner';
+	src:url('../AirConditioner.ttf') format('truetype');
+}
 
-h1, header input { letter-spacing:-1px; font-weight:bold; text-align:center; font-size:2em; }
+body { font-family:Helvetica,sans-serif; font-size:12pt; }
+
+h1 { font-family:'AirConditioner',Helvetica, sans-serif; text-align:center; font-size:4em; }
 
 /*	Forms	*/
 header input { color:red; }
