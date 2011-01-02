@@ -1,12 +1,5 @@
-%header
-	%form{:method => "post", :action => "/"}
-		%h2
-			Is @
-			%input{:type => "text", :id => "username", :name => "username", :value => @username}
-			angry today?
-		%p
-			%pre
-				- if @timeout
-					#{@timeout}
-				- else
-					#{@angriest_tweet.inspect}
+%form{:method => "post", :action => "/", :id => "name_form"}
+	%h2
+		Is @
+		%input{:type => "text", :id => "username", :name => "username", :value => @username}
+		angry today?

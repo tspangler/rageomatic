@@ -1,11 +1,43 @@
 !!! 5
 %html
 	%head
+		%link{:rel => "stylesheet", :href => "http://fonts.googleapis.com/css?family=Lobster" }
 		%link{:rel => "stylesheet", :href => "/css/screen.css"}
 		- if @username
 			%title= "Is @#{@username} angry today?"
 		- else
-			%title="Rageomatic!"
+			%title="rageomatic!"
+		%script{:type =>	'text/javascript',
+						:src	=>	'https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js' }
+		%script{:type =>	'text/javascript',
+						:src	=>	'application.js'}
 	%body
-		%h1 Rageomatic!
-		= yield
+		%header
+			%h1 rageomatic!
+
+		%section
+			= yield
+
+		%section{:id => 'results'}
+			%h2
+			%div
+				%p
+
+		%section
+			:markdown
+				Why?
+				----
+				For the hell of it.
+
+				Under the hood
+				--------------
+				rageomatic is powered by [Sinatra](http://sinatrarb.com), with front-end help from [Haml](http://haml-lang.com) &amp; [Sass](http://sass-lang.com). The content is formatted with [Markdown](http://daringfireball.net/projects/markdown/), the JavaScript is done with [jQuery](http://jquery.com) and the fancy fonts are from the [Google Font Directory](http://code.google.com/webfonts).
+				
+				
+				API
+				---
+				Sure, if you can call it that. Perform a GET request on `/check` and provide a `username` parameter. You'll get a JSON string back with the username and the score and text of the angriest of the user's last 200 tweets.
+						
+		%footer
+			:markdown
+				Hand-crafted by @[symsonic](http://twitter.com/symsonic). Go follow him.

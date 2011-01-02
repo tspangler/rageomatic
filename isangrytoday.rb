@@ -7,16 +7,18 @@ require 'json'
 
 set :haml, :format => :html5
 set :logging, true
+mime_type :ttf, 'application/octet-stream'
 
 get '/' do
   haml :index
 end
 
-post '/' do
+get '/check' do
   @username = params[:username]  
 
   # Set up an empty hash for the angriest tweet of them all
-  @angriest_tweet = {:score => 0, :text => ''}
+  @angriest_tweet = {:name => '', :score => 0, :text => ''}
+  @angriest_tweet[:name] = @username
 
   begin
     # Fetch the timeline
@@ -39,12 +41,8 @@ post '/' do
   rescue Timeout::Error
     @timeout = 'Could not fetch timeline for ' + @username + '.'
   end
-
-  haml :index, :locals => {:angriest_tweet => @angriest_tweet, :timeout => @timeout, :timeline => @timeline}
-end
-
-get '/AirConditioner.ttf' do
-  open('AirConditioner.ttf').read
+  
+  @angriest_tweet.to_json
 end
 
 get '/css/screen.css' do

@@ -3,9 +3,25 @@
 	src:url("/AirConditioner.ttf") format("truetype");
 }
 
-body { font-family:Helvetica,sans-serif; font-size:12pt; }
+body { font-family:Helvetica,sans-serif; }
 
-h1 { font-family:'AirConditioner',Helvetica, sans-serif; text-align:center; font-size:4em; }
+/*	Structural	*/
+footer {
+	font-size:.8em;
+	text-align:center;
+}
+
+/*	Typography	*/
+h1 {
+	font-family:'Lobster','AirConditioner',Helvetica, sans-serif;
+	font-size:4em;
+		
+	text-align:center;
+}
 
 /*	Forms	*/
-header input { color:red; }
+form, input {
+	font-size:1.5em;
+}
+
+input { font-family:Helvetica,sans-serif; color:red; }
