@@ -3,3 +3,12 @@
 		Is @
 		%input{:type => "text", :id => "username", :name => "username", :value => @username}
 		angry today?
+		
+%noscript
+	%p
+		It looks like you've got JavaScript off. Because Rageomatic is all fancy-schmancy, you need JavaScript on in order to fetch your results.
+	
+%div{:id => 'loading'}
+	%img{:src => 'spinner.gif'}
+	%h3
+		Checking...

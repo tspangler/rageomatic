@@ -14,35 +14,39 @@ get '/' do
 end
 
 get '/check' do
-  @username = params[:username]  
+    @username = params[:username]  
 
-  # Set up an empty hash for the angriest tweet of them all
-  @angriest_tweet = {:name => '', :score => 0, :text => ''}
-  @angriest_tweet[:name] = @username
+    # Set up an empty hash for the angriest tweet of them all
+    @angriest_tweet = {:name => '', :score => 0, :text => ''}
+    @angriest_tweet[:name] = @username
 
-  begin
-    # Fetch the timeline
-    @timeline = fetch_and_parse_timeline(@username)
-    @timeline.each do |tweet|
-      angriness_factor = calculate_angriness_factor(tweet['text'])
+    begin
+      # Fetch the timeline
+      @timeline = fetch_and_parse_timeline(@username)
+      @timeline.each do |tweet|
+        angriness_factor = calculate_angriness_factor(tweet['text'])
 
-      @angriness_total = 0
-      angriness_factor.each_value {|value| @angriness_total += value}
+        @angriness_total = 0
+        angriness_factor.each_value {|value| @angriness_total += value}
     
-      if @angriness_total > @angriest_tweet[:score]
-        @angriest_tweet[:score] = @angriness_total
-        @angriest_tweet[:text] = tweet['text']
-      end
-    end    
+        if @angriness_total > @angriest_tweet[:score]
+          @angriest_tweet[:score] = @angriness_total
+          @angriest_tweet[:text] = tweet['text']
+        end
+      end  
+      
+      if @angriest_tweet[:score] == 0 && @angriest_tweet[:text] == ''
+        @angriest_tweet[:text] = 'NF'
+      end  
 
-  rescue OpenURI::HTTPError
-    @timeout = "Couldn't find Twitter user #{@username}!"
+    rescue OpenURI::HTTPError
+      @angriest_tweet[:text] = 'NF'
 
-  rescue Timeout::Error
-    @timeout = 'Could not fetch timeline for ' + @username + '.'
-  end
+    rescue Timeout::Error
+      @angriest_tweet[:text] = 'ERR'
+    end
   
-  @angriest_tweet.to_json
+    @angriest_tweet.to_json
 end
 
 get '/css/screen.css' do

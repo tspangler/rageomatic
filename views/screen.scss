@@ -3,25 +3,164 @@
 	src:url("/AirConditioner.ttf") format("truetype");
 }
 
-body { font-family:Helvetica,sans-serif; }
+body { 
+	margin:0;
+	padding:0;
+	
+	background:#132124;
+	font-family:Helvetica,sans-serif;
+	color:#fff;
+	}
 
 /*	Structural	*/
+article h2 {
+	margin-bottom:5px;
+}
+
+article p {
+	font-size:.9em;
+	line-height:1.3em;
+	
+	margin-top:0px;
+}
+
+#bottom {
+	width:85%;
+	margin:0 auto;
+}
+
+#first_box, #second_box, #third_box {
+	width:25%;
+	float:left;
+}
+
+#first_box, #second_box {
+	margin:0 10% 0 0;
+}
+
 footer {
+	clear:both;
+	
 	font-size:.8em;
 	text-align:center;
+
+	padding:20px 0 0 0;
+}
+
+.error, noscript p {
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+
+	text-align:center;
+	width:75%;
+	margin:20px auto 0 auto;
+	padding:10px;
+
+	background:#ff3c3c;
+	clear:both;
+}
+
+#loading {
+	display:none;
+	width:95%;
+	
+	text-align:center;
+
+	margin:0 auto;
+	padding:10px;
+}
+
+#loading img {
+/*
+	float:left;
+	margin:13px 15px 0 0;
+*/
+}	
+
+/*	Results	*/
+#results {
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+	border-radius:10px;
+	
+	margin:10px auto auto auto;
+	padding:10px;
+	
+	width:40%;
+
+	display:none;
+	
+	background:#424f4a;
+}
+
+#results h2 {
+	margin:0 0 0 15px;
+}
+
+#results img {
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	-o-border-radius:5px;
+	border-radius:5px;
+
+	width:64px;
+	height:64px;
+	
+	float:left;
+
+	margin:0 10px 0 0;
+	padding:0 0 20px 0;
+}
+
+#results a {
+	float:right;
+	text-align:right;
 }
 
 /*	Typography	*/
 h1 {
-	font-family:'Lobster','AirConditioner',Helvetica, sans-serif;
-	font-size:4em;
-		
+	font-size:7em;	
 	text-align:center;
+	font-family:'Lobster','AirConditioner',Helvetica, sans-serif;
+
+
+	text-shadow:0 4px 4px rgba(255, 255, 255, 0.25);
+}
+
+a {
+	color:#67b1b7;
+	text-decoration:none;
+}
+
+a:hover {
+	text-decoration:underline;
 }
 
 /*	Forms	*/
+form {
+	background:#ed2414;
+	width:100%;
+	
+	margin:0 auto;
+	padding:15px;
+	
+	text-align:center;
+}
+
 form, input {
-	font-size:1.5em;
+	font-size:1.2em;
+}
+
+input {
+	border:1px solid gray;
+	-webkit-border-radius:2px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+}
+
+input[type=submit] {
+	
 }
 
 input { font-family:Helvetica,sans-serif; color:red; }

@@ -3,15 +3,19 @@
 	%head
 		%link{:rel => "stylesheet", :href => "http://fonts.googleapis.com/css?family=Lobster" }
 		%link{:rel => "stylesheet", :href => "/css/screen.css"}
+		%link{:rel => "icon", :type => "image/png", :href => "/apple-touch-icon-precomposed.png"}
+
 		- if @username
 			%title= "Is @#{@username} angry today?"
 		- else
-			%title="rageomatic!"
+			%title="Rageomatic!"
 		%script{:type =>	'text/javascript',
 						:src	=>	'https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js' }
 		%script{:type =>	'text/javascript',
 						:src	=>	'application.js'}
 	%body
+		<a href="http://github.com/tspangler/rageomatic"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://assets2.github.com/img/4c7dc970b89fd04b81c8e221ba88ff99a06c6b61?repo=&url=http%3A%2F%2Fs3.amazonaws.com%2Fgithub%2Fribbons%2Fforkme_right_white_ffffff.png&path=" alt="Fork me on GitHub"></a>
+
 		%header
 			%h1 rageomatic!
 
@@ -19,25 +23,47 @@
 			= yield
 
 		%section{:id => 'results'}
+			%img{:src => 'apple-touch-icon-precomposed.png'}
 			%h2
 			%div
 				%p
+				%a{:href => "http://twitter.com/share"}Share this on Twitter
+				%br
 
-		%section
-			:markdown
-				Why?
-				----
-				For the hell of it.
+		%section{:id => 'bottom'}
+			%article{:id => 'first_box'}
+				:markdown
+					How?
+					----
+					Three factors are taken into account when calculating the angriness of a tweet: The percentage of capital letters, the percentage of exclamation points and the number of curse words. You can check out the algorithm (and improve it!) by taking a look at the [source on GitHub](http://github.com/tspangler/rageomatic).
 
-				Under the hood
-				--------------
-				rageomatic is powered by [Sinatra](http://sinatrarb.com), with front-end help from [Haml](http://haml-lang.com) &amp; [Sass](http://sass-lang.com). The content is formatted with [Markdown](http://daringfireball.net/projects/markdown/), the JavaScript is done with [jQuery](http://jquery.com) and the fancy fonts are from the [Google Font Directory](http://code.google.com/webfonts).
+			%article{:id => 'second_box'}
+				:markdown
+					Under the hood
+					--------------
+					Rageomatic is powered by [Sinatra](http://sinatrarb.com), with front-end help from [Haml](http://haml-lang.com) &amp; [Sass](http://sass-lang.com). The content is formatted with [Markdown](http://daringfireball.net/projects/markdown/), the JavaScript is done with [jQuery](http://jquery.com) and the fancy fonts are from the [Google Font Directory](http://code.google.com/webfonts).
 				
-				
-				API
-				---
-				Sure, if you can call it that. Perform a GET request on `/check` and provide a `username` parameter. You'll get a JSON string back with the username and the score and text of the angriest of the user's last 200 tweets.
+			%article{:id => 'third_box'}
+				:markdown
+					API
+					---
+					Sure, if you can call it that. Perform a GET request on `/check` and provide a `username` parameter. You'll get a JSON string back with the username and the score and text of the angriest of the user's last 200 tweets.
 						
 		%footer
 			:markdown
-				Hand-crafted by @[symsonic](http://twitter.com/symsonic). Go follow him.
+				Hand-crafted by @[symsonic](http://twitter.com/symsonic). Go follow him or [hire him](http://timspangler.com).
+
+	:plain
+		<script type="text/javascript">
+
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-20717058-1']);
+		  _gaq.push(['_trackPageview']);
+
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+
+		</script>
