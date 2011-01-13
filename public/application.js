@@ -36,7 +36,7 @@ function setup_twitter_link(username, percentage) {
 	var twitter_link = $('#results a');
 	
 	if(twitter_link.length) {	
-		var api_link = 'http://twitter.com/share?url=http://rageomatic.com&text=My+tweets+are+' + percentage + '%25+rageful.'
+		var api_link = 'http://twitter.com/share?url=http://rageomatic.com&text=My+tweets+are+' + percentage + '%25+rageful+according+to+@itsrageomatic:'
 		
 		twitter_link.attr('href', api_link);
 	}
